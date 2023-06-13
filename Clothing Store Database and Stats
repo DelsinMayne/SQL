@@ -1,0 +1,28 @@
+--Create a clothing store database
+
+CREATE TABLE clothing (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER, cost INTEGER);
+
+INSERT INTO clothing VALUES(1, "T-Shirt", 67, 3, 30);
+INSERT INTO clothing VALUES(2, "Jeans", 32, 4, 50);
+INSERT INTO clothing VALUES(3, "Socks", 40, 1, 15);
+INSERT INTO clothing VALUES(4, "Underwear", 35, 1, 20);
+INSERT INTO clothing VALUES(5, "Shorts", 27, 5, 35);
+INSERT INTO clothing VALUES(6, "Sweatshirt", 26, 2, 45);
+INSERT INTO clothing VALUES(7, "Jackets", 14, 6, 60);
+INSERT INTO clothing VALUES(8, "Trench Coat", 6, 6, 80);
+INSERT INTO clothing VALUES(9, "Sweatpants", 20, 2, 40);
+INSERT INTO clothing VALUES(10, "Bathing Suit", 10, 7, 30);
+INSERT INTO clothing VALUES(11, "Sandals", 6, 7, 40);
+INSERT INTO clothing VALUES(12, "Baseball Cap", 4, 8, 20);
+INSERT INTO clothing VALUES(13, "Beanie", 10, 8, 20);
+INSERT INTO clothing VALUES(14, "Fedora", 6, 8, 30);
+INSERT INTO clothing VALUES(15, "Belt", 10, 1, 35);
+
+--display the database ordered by aisle
+SELECT * FROM clothing ORDER BY aisle asc;
+
+--what 5 items have the lowest stock
+SELECT name, aisle, quantity FROM clothing ORDER BY quantity asc LIMIT 5;
+
+--display the database ordered by cost
+SELECT name, id, aisle, cost FROM clothing ORDER BY cost asc;
