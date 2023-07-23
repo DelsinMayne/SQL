@@ -74,4 +74,9 @@ ORDER BY volume asc;
 SELECT body, density 
 FROM solar_system_objects
 ORDER BY density desc
-LIMIT 10
+LIMIT 10;
+
+SELECT body 
+FROM solar_system_objects
+WHERE mean_radius > 1000
+AND type_of_object LIKE '%planet%';
