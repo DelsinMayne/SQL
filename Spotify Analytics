@@ -52,4 +52,15 @@ SELECT AVG(tempo)
 FROM BIT_DB.Spotifydata
 WHERE popularity >= 90;
 
+# I used a CTE to determine the top artists based on average popularity and labeled them as a 'Top Star'.
+
+WITH popularity_average_CTE AS(
+    SELECT artist_name, AVG(popularity) AS average_popularity
+    FROM Spotifydata
+    GROUP BY artist_name)
+
+SELECT artist_name, average_popularity, 'Top Star' AS tag
+FROM popularity_average_CTE
+Where average_popularity >= 90;
+
 
