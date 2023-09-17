@@ -82,3 +82,16 @@ WITH safety_rating_CTE AS(
 SELECT street, average_safety_rating, 'Safe Lane' AS 'label'
 FROM safety_rating_CTE
 WHERE average_safety_rating >= 4.0;
+
+
+# I utilized a window function to provide a list of all bike lanes with both safety ratings, an average safety rating for each lane, and a label with recommendations to "Remove", "Leave As-Is", or "Improvements Needed".
+
+SELECT street, safetyrating, 
+AVG(safetyrating) OVER (PARTITION BY street) AS "average_safety_rating",
+CASE 
+    WHEN AVG(safetyrating) OVER (PARTITION BY street) >= 4 THEN "Leave As-Is"
+    WHEN AVG(safetyrating) OVER (PARTITION BY street) < 2.5 THEN "Remove"
+    ELSE "Improvements Needed"
+    END AS "Reccomendation"
+FROM CityBikeLanes;
+
